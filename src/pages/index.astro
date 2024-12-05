@@ -1,5 +1,5 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import Concepto from '../components/Concepto.astro';
 import Layout from '../layouts/Layout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -7,5 +7,112 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<h1>Practicas en CSS</h1>
+	<h2>Modelo de cajas</h2>
+
+	<Concepto title="Rango de Dimensiones" body="el rango de dimensiones se puede medir mediante las propiedades(max-width,min-width,max-height,min-height)">
+		<div class="dimensiones"></div>
+	</Concepto>
+	<Concepto title="Valores Intrinsecos" body="hace referencia al tamaño minimo para mostrar el contenido del elemento (min-content,max-content)">
+		<div class="box min">Esto es un ejemplo de <code>min-content</code></div>
+		<div class="box max">Esto es un ejemplo de <code>max-content</code></div>
+	</Concepto>
+	<Concepto title="Proporcion de aspecto" body="referente a la proporcion de width y heigth (aspect-ratio)">
+		<div class="aspecto">Aspecto</div>
+	</Concepto>
+	<Concepto title="Desbordamiento" body="ocurre cuando el contenido es mas grade que el contenedor (overflow-x,overflow-y,overflow)">
+		<div class="desbordamiento hidden">
+			<p>Desbordamiento</p>
+		</div><br>
+		<div class="desbordamiento visible">
+			<p>Desbordamiento</p>
+		</div><br>
+		<div class="desbordamiento scroll">
+			<p>Desbordamiento</p>
+		</div>
+	</Concepto>
+	<Concepto title="Cajas" body="Permite alterar el calculo de tamaño de una caja o contenedor (box-sizing)">
+		<div class="cbox">
+			Bos de 100px y 10px de padding 
+		</div>
+		<div class="bbox">
+			Box de 100px y 10px de padding
+		</div>
+	</Concepto>
+	<Concepto title="Modo de Escritura" body="Estable la direccion del texto (writing-mode)">
+		<div class="horizontal">Texto escrito</div>
+		<div class="vertical1">Texto escrito</div>
+		<div class="vertical2">Texto escrito</div>
+	</Concepto>
 </Layout>
+
+<style>
+:root{
+	width: 800px;
+	margin: 0 auto;
+	background-color: #222;
+	color:#ddd;
+}
+.horizontal{
+	writing-mode: horizontal-tb;
+}
+.vertical1{
+	writing-mode: vertical-lr;
+	background-color: blue;
+	width: 100px;
+}
+.vertical2{
+	writing-mode: vertical-rl;
+	background-color: purple;
+	width: 100px;
+}
+.cbox{
+	box-sizing: content-box;
+	background-color: purple;
+	aspect-ratio: 1/1;
+	width: 100px;
+	padding: 10px;
+}
+.bbox{
+	box-sizing: border-box;
+	background-color: blue;
+	aspect-ratio:1/1;
+	width: 100px;
+	padding: 10px;
+}
+.desbordamiento{
+	aspect-ratio: 1/1;
+	width:  100px;
+	font-size: xx-large;
+	background-color: purple;
+}
+.hidden{
+	overflow: hidden;
+}
+.visible{
+	overflow: visible;
+}
+.scroll{
+	overflow: scroll;
+}
+.dimensiones {
+  width: 100%;
+  min-width: 300px;
+  max-width: 800px;
+  height: 200px;
+  background: red;
+}
+.box {
+  background: indigo;
+  color: white;
+  height: 150px;
+  margin: 1rem 0;
+}
+.aspecto{
+	aspect-ratio: 2/1;
+	height: 200px;
+	background-color: red;
+}
+.min { width: min-content; }
+.max { width: max-content; }
+</style>
